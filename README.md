@@ -26,8 +26,37 @@ This file contains a number of front-end interview questions that can be used wh
 
 * What did you learn yesterday/this week?
 * What excites or interests you about coding?
+  As cliche as this sounds, I love taking on technical challenges, and the joy I experience when I solve it. My father is an engineer himself (mechanical engineer), who is now a professor at Harvey Mudd College. As a young child, I was always fascinated by how he would show me interesting science demonstrations, such as putting a toy boat in the bathtub, and just adding liquid bodywash into the tub to propel the boat. It was these sorts of gems that he exposed me to that spurs the curiosity in me over how things work in this world. 
+  
 * What is a recent technical challenge you experienced and how did you solve it?
+  Yesterday, I was working on a UI codebase built in React and Redux. In terms of data/state management, there is a mix of Redux as well as passing state through props. 
+  With a traditional React app (no Redux, no context API) using props to pass data/state, there are obvious flaws. One common flaw is where you have a deeply nested chain of components, and one of the descendent components "clips" certain props (through filtering props received from its parent, or changing the data and passing it with the same props name, etc), which can occur in multiple components down the chain. As a result, a descendant component may have received "altered" data or even data that is "assumed" to be the same as what started from the root parent. Furthermore, if a new component were introduced as a child component along that chain, and requires that props data that was omitted, then we are either forced to either attach that prop for every component down the chain from where it was omitted, or store/retrieve it via Redux. This adds more overhead to the components, and at some point, may be difficult to maintain bloated components. 
+  On the other end of the spectrum, an app can be architected solely using Redux for any state mgmt, but that often is not the case for most applications, where there are many direct parent-child compositions that does not warrant wrapping both components with the Redux provider, as that adds more overhead via extra process of the parent component saving state to the store, then having that state being pulled down into the child component. 
+  
 * What UI, Security, Performance, SEO, Maintainability or Technology considerations do you make while building a web application or site?
+  - UI: a11y (Accessibility): making sure that your site is following WCAG standards and is easily navigable using assistive technologies such as screen readers. This can be achieved within:
+    - HTML markup using WAI-ARIA (Web Accessibility Initiative - Accessible Rich Internet Applications) specifications
+      - Dynamic & interactive elements (pop up alerts, etc)
+      - Javascript
+      - Non text elements (audio/video) should have text alternatives such as captions/transcripts
+      - Images should have descriptive alt text d)
+    - Focus management (focus traps, etc)
+    - Color contrasts
+  - Security: proper authentication and authorization system in place
+    - Auto time out of sessions (within a reasonable time frame)
+    - Conceal password field entry
+    - Encrypt passwords (never send via plain text)
+    - MFA (Multi-Factor Authentication)
+  - Security: guard against XSS
+    - Sanitize input fields
+  - Performance: think about scalability in terms of components and data
+    - Use appropriate data structures (objects vs arrays, etc)
+    - Minimizing cloning/copying of data
+    - Lazy loading of (UI) components
+    - Caching
+    - Critical CSS (consider only above-the-fold elements)
+    - 
+  - 
 * Talk about your preferred development environment.
 * Which version control systems are you familiar with?
 * Can you describe your workflow when you create a web page?
