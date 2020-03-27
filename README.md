@@ -131,18 +131,30 @@ This file contains a number of front-end interview questions that can be used wh
 
 * Explain event delegation
 * Explain how `this` works in JavaScript
+  - The `this` keyword refers to the lexical execution context (global, function, or eval) at call time.
+  - A property of an execution context (global, function or eval) that, in non–strict mode, is always a reference to an object and in strict mode can be any value.
 * Explain how prototypal inheritance works
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
+  - Function `foo` is a function declaration. 
   * What needs to be changed to properly make it an IIFE?
+    - Make the function anonymous and wrap the declaration in parenthesis: `(function(){ })();`
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
+  - `null`: intentional absence of a value
+  - `undefined`: variable has been declared, but has not been initialized/assigned a value
+  - undeclared: a variable has not been declared, and will throw an error if that non-existant variable is referenced/evaluated
   * How would you go about checking for any of these states?
+  - `null`: `var === null`
+  - `undefined`: `typeof var === 'undefined'`
+  - undeclared: use a `try..catch` block and check if variable has been declared
 * What is a closure, and how/why would you use one?
 * What's a typical use case for anonymous functions?
 * How do you organize your code? (module pattern, classical inheritance?)
 * What's the difference between host objects and native objects?
 * Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
 * What's the difference between `.call` and `.apply`?
+  - `.call`: takes `this` as the first argument, and a **C**omma-separated list of arguments after that
+  - `.apply`: takes `this` as the first argument, and arguments as an **A**rray after it
 * Explain `Function.prototype.bind`.
 * When would you use `document.write()`?
 * What's the difference between feature detection, feature inference, and using the UA string?
