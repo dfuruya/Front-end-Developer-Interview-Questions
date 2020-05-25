@@ -130,10 +130,12 @@ This file contains a number of front-end interview questions that can be used wh
 #### JS Questions:
 
 * Explain event delegation
+  - Event delegation is a pattern that is used to take advantage of the concept of "bubbling". When an event occurs somewhere on the DOM (`onclick`, etc), that even will "bubble" up from the target child node, up through its ancestors in the DOM tree. If we have multiple siblings or children, instead of attaching an event handler for each node, we can "delegate" dealing with that event by attaching a single event handler to that common parent ancestor node, and checking the `event.target` to see which node that event originated from.
 * Explain how `this` works in JavaScript
   - The `this` keyword refers to the lexical execution context (global, function, or eval) at call time.
   - A property of an execution context (global, function or eval) that, in non–strict mode, is always a reference to an object and in strict mode can be any value.
 * Explain how prototypal inheritance works
+  - In JS, every object has a pointer to either a parent object (or `null`), where it inherits its properties and methods. (For more detail, [see this gist](https://gist.github.com/dfuruya/6e5a1031316c70596f3cfe254cab7b8f))
 * What do you think of AMD vs CommonJS?
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   - Function `foo` is a function declaration. 
