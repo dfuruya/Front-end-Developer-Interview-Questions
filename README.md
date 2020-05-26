@@ -171,7 +171,14 @@ This file contains a number of front-end interview questions that can be used wh
   - `.call`: takes `this` as the first argument, and a **C**omma-separated list of arguments after that
   - `.apply`: takes `this` as the first argument, and arguments as an **A**rray after it
 * Explain `Function.prototype.bind`.
+  - The `.bind` method creates a new function that, when called, has its `this` keyword set to the the provided value, along with a comma-separated list of arguments as the arguments passed to the function at call time. 
 * When would you use `document.write()`?
+  - Since `document.write` will clear a document's content, and parse the stringified argument that is passed in, there is a potential performance hit. In this case, using DOM manipulation would be better suited. A reasonable use case for `document.write` is conditionally loading a local, cached version of a 3rd party script in case a CDN is unavailable:
+  ```html
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.3.min.js"><\/script>')</script>
+  ```
 * What's the difference between feature detection, feature inference, and using the UA string?
 * Explain Ajax in as much detail as possible.
 * What are the advantages and disadvantages of using Ajax?
