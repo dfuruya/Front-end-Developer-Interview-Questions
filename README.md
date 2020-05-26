@@ -1,4 +1,4 @@
-#Front-end Job Interview Questions
+# Front-end Job Interview Questions
 
 This file contains a number of front-end interview questions that can be used when vetting potential candidates. It is by no means recommended to use every single question here on the same candidate (that would take hours). Choosing a few items from this list should help you vet the intended skills you require.
 
@@ -136,11 +136,12 @@ This file contains a number of front-end interview questions that can be used wh
   - A property of an execution context (global, function or eval) that, in non–strict mode, is always a reference to an object and in strict mode can be any value.
 * Explain how prototypal inheritance works
   - In JS, every object has a pointer to either a parent object (or `null`), where it inherits its properties and methods. (For more detail, [see this gist](https://gist.github.com/dfuruya/6e5a1031316c70596f3cfe254cab7b8f))
-* What do you think of AMD vs CommonJS?
+* What is an IIFE? What is it used for?
+  - IIFE stands for Immediately Invoked Function Expression. Before `let` and `const`, because `var` has no block-level scope, IIFE was invented as a way to emulate private variables. By placing parenthesis around an anonymous function declaration, we are effectively creating a momentary scope that vanishes once it is invoked. 
 * Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   - Function `foo` is a function declaration. 
   * What needs to be changed to properly make it an IIFE?
-    - Make the function anonymous and wrap the declaration in parenthesis: `(function(){ })();`
+    - Make the function anonymous and wrap the declaration (or the entire expression) in parenthesis: `(function(){ })();` or `(function(){ }());`
 * What's the difference between a variable that is: `null`, `undefined` or undeclared?
   - `null`: intentional absence of a value
   - `undefined`: variable has been declared, but has not been initialized/assigned a value
@@ -149,11 +150,23 @@ This file contains a number of front-end interview questions that can be used wh
   - `null`: `var === null`
   - `undefined`: `typeof var === 'undefined'`
   - undeclared: use a `try..catch` block and check if variable has been declared
+* What is 'Strict Mode', and how would you use it?
+  - It is a way to opt in to a restricted variant of JS (or conversely opting out of writing "sloppy" JS). It changes JS semantics to entire scripts or to individual functions in the following ways:
+    - forcing some silent errors to be thrown
+    - fixes code mistakes that make it difficult for JS engines to perform optimizations
+    - prohibits some syntax likely to be defined in future versions of ES
+* Name the types of scopes in JS and describe them.
+  - Global: if a variable is declared outside all functions or curlies (`{}`), it is defined in the global scope. It is good practice to avoid global variables, as there is a potential risk of naming collisions.
+  - Local: there are two kinds of local scopes: 1) function and 2) block scope. 
+    - For more info on these scopes, [see this gist](https://gist.github.com/dfuruya/7c001a6c247bca1bcbae654746e3a62a)
+* What is the difference between declaring variables using `var`, `let` and `const`?
+  - [see this gist](https://gist.github.com/dfuruya/7c001a6c247bca1bcbae654746e3a62a)
 * What is a closure, and how/why would you use one?
+  - A closure is the lexical scope in which an outer function has access to an inner function's variables even after it has returned control. For more info, [see this gist](https://gist.github.com/dfuruya/7c001a6c247bca1bcbae654746e3a62a)
 * What's a typical use case for anonymous functions?
-* How do you organize your code? (module pattern, classical inheritance?)
-* What's the difference between host objects and native objects?
-* Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
+  - Since anonymous functions can't be accessed after its initial declaration, it is normally used as an argument to other functions, or as a closure (IIFE, etc)
+* Describe the `new` keyword.
+  - The `new` keyword creates an instance of a user-defined object or `class` functions. For more info, [see this gist](https://gist.github.com/dfuruya/b86ff0fd70fe0722ec18d325201d7e85)
 * What's the difference between `.call` and `.apply`?
   - `.call`: takes `this` as the first argument, and a **C**omma-separated list of arguments after that
   - `.apply`: takes `this` as the first argument, and arguments as an **A**rray after it
